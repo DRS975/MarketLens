@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Friends Navigation</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-market">
+    <div class="ar-overlay">
+        <div class="top-section">
+            <div class="top-label">SIGNAL_TRACKING_ACTIVE</div>
+            
+            <div class="menu-stack">
+                <div class="menu-header">Find Friends</div>
+                
+                <div class="event-card">
+                    <div class="event-info">
+                        <span class="stall-name">Bob</span>
+                        <span class="wait-time">ETA: 2 MIN (50m)</span>
+                    </div>
+                    <button class="menu-item nav-trigger" onclick="startNavigation('Bobnavi.jpg')">NAVIGATE</button>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-info">
+                        <span class="stall-name">Alice</span>
+                        <span class="wait-time">ETA: 5 MIN (120m)</span>
+                    </div>
+                    <button class="menu-item nav-trigger" onclick="startNavigation('Alicenavi.jpg')">NAVIGATE</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="ar-nav-layer" class="ar-nav-overlay" style="display: none;">
+            <div class="ar-arrow">
+                <div class="arrow-head"></div>
+                <div class="arrow-line"></div>
+            </div>
+            <div class="nav-toast">LOCKING SIGNAL...</div>
+        </div>
+
+        <div class="bottom-nav">
+            <button class="menu-item nav-btn" onclick="window.history.back()">❮</button>
+            <a href="index.html" class="menu-item nav-btn">⌂</a>
+            <button class="menu-item nav-btn" id="help-trigger">?</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // SINGLE FUNCTION VERSION
+        function startNavigation(bgImage) {
+            const navLayer = document.getElementById('ar-nav-layer');
+            navLayer.style.display = 'block';
+            
+            // If no image is passed, it uses a default
+            const targetBg = bgImage || 'default-nav.jpg';
+
+            setTimeout(() => {
+                window.location.href = 'navigation.html?bg=' + targetBg;
+            }, 1500);
+        }
+
+        // Help Modal triggers (since these aren't in your script.js yet)
+        document.getElementById('help-trigger').onclick = () => {
+            document.getElementById('help-modal').style.display = 'block';
+        };
+        function closeHelp() {
+            document.getElementById('help-modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

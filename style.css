@@ -1,0 +1,165 @@
+/* =========================================
+   CORE CYBER DESIGN & LAYOUT
+   ========================================= */
+:root {
+    --ar-cyan: #00ffff;
+    --glass-bg: rgba(0, 20, 30, 0.6);
+    --glass-blur: blur(15px);
+    --neon-glow: 0 0 15px rgba(0, 255, 255, 0.7);
+}
+
+body, html {
+    margin: 0; padding: 0;
+    height: 100vh; width: 100vw;
+    overflow: hidden;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--ar-cyan);
+    cursor: none; /* Required to use the custom AR cursor */
+}
+
+.bg-market {
+    /* LOCAL IMAGE PATH: Note the "file:///" prefix and forward slashes for Windows paths */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                url('markt.webp') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: black; /* Fallback if image path is incorrect */
+}
+
+.ar-overlay {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   TOP SECTION & UNIFORM BUTTONS
+   ========================================= */
+.top-label { 
+    text-align: center; 
+    letter-spacing: 5px; 
+    font-size: 0.9rem; 
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-shadow: var(--neon-glow);
+}
+
+.menu-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start; /* Keeps buttons aligned to the left */
+}
+
+.menu-header {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    padding: 12px 25px;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.5rem;
+    border-left: 4px solid var(--ar-cyan);
+    margin-bottom: 10px;
+}
+
+.menu-item {
+    position: relative;
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    padding: 18px 30px;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 250px; /* Fixed width prevents randomly sized buttons */
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: block;
+    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+/* Gaze Selection Progress Bar */
+.menu-item::after {
+    content: ''; 
+    position: absolute; 
+    bottom: 0; 
+    left: 0;
+    width: 0%; 
+    height: 4px; 
+    background: var(--ar-cyan);
+    box-shadow: 0 0 10px var(--ar-cyan);
+    transition: width 3s linear; 
+}
+
+.menu-item:hover::after { 
+    width: 100%; 
+}
+
+/* =========================================
+   BOTTOM NAVIGATION (Fixed Missing Bar)
+   ========================================= */
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 1px solid rgba(0, 255, 255, 0.3);
+    background: linear-gradient(transparent, rgba(0, 255, 255, 0.05));
+}
+
+.nav-btn {
+    width: 70px !important; 
+    height: 70px;
+    padding: 0 !important;
+    border-radius: 50% !important; /* Makes navigation buttons circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+/* =========================================
+   FIXED AR CURSOR (The Missing Element)
+   ========================================= */
+#ar-cursor {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--ar-cyan);
+    border-radius: 50%;
+    pointer-events: none; /* Critical: allows clicks to pass through */
+    transform: translate(-50%, -50%);
+    z-index: 999999; /* Highest priority */
+    box-shadow: var(--neon-glow);
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    background: rgba(0, 255, 255, 0.05);
+}
+
+#ar-cursor.gaze-active {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 255, 255, 0.5);
+    border-width: 3px;
+}
+
+/* =========================================
+   HELP MODAL
+   ========================================= */
+#help-modal {
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 350px; 
+    padding: 30px;
+    background: rgba(0, 10, 15, 0.95);
+    backdrop-filter: var(--glass-blur);
+    border: 2px solid var(--ar-cyan);
+    border-radius: 10px;
+    z-index: 100000;
+    color: white;
+    text-align: center;
+}

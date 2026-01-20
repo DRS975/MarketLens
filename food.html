@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food - AR Market</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-market">
+    <div class="ar-overlay">
+        
+        <div class="top-section">
+            <div class="top-label">VENDORS_NEARBY</div>
+            <div class="menu-header">Food Stalls</div>
+            
+            <div class="menu-stack">
+                <div class="event-card">
+                    <div class="event-info">
+                        <span class="stall-name">Bratwurst Grill</span>
+                        <span class="wait-time">Row 1 - 50m</span>
+                    </div>
+                    <button class="menu-item" onclick="startNavigation('FoodMenu.jpg')">VIEW MENU</button>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-info">
+                        <span class="stall-name">Gingerbread House</span>
+                        <span class="wait-time">Row 3 - 110m</span>
+                    </div>
+                    <button class="menu-item" onclick="startNavigation('FoodMenu.jpg')">VIEW MENU</button>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-info">
+                        <span class="stall-name">Roasted Nuts</span>
+                        <span class="wait-time">Row 1 - 20m</span>
+                    </div>
+                    <button class="menu-item" onclick="startNavigation('FoodMenu.jpg')">VIEW MENU</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="ar-nav-layer" class="ar-nav-overlay" style="display: none;">
+            <div class="nav-toast">CONNECTING TO STALL...</div>
+        </div>
+
+        <div class="bottom-nav">
+            <button class="menu-item nav-btn" onclick="window.history.back()">❮</button>
+            <a href="index.html" class="menu-item nav-btn">⌂</a>
+            <button class="menu-item nav-btn" onclick="alert('Gaze at View Menu to see AR options')">?</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // The missing function that connects this page to navigation.html
+        function startNavigation(imageName) {
+            // 1. Show the transition overlay
+            const loader = document.getElementById('ar-nav-layer');
+            if(loader) loader.style.display = 'flex';
+
+            // 2. Wait 1 second, then go to the next page
+            setTimeout(() => {
+                window.location.href = 'navigation.html?bg=' + imageName;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

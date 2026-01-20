@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AR Christmas Market</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-market">
+
+    <div class="ar-overlay">
+        
+        <div class="top-content">
+            <div class="status-bar">
+                <div id="date">DEC 24, 2026</div>
+                
+                <div class="time-box">18:45</div>
+            </div>
+
+            <div class="menu-stack">
+                <div class="menu-header">Main Menu</div> 
+                
+                <a href="explore.html" class="menu-item">Explore</a>
+                <a href="friends.html" class="menu-item">Friends</a>
+            </div>
+        </div>
+
+        <div id="help-modal">
+            <div class="modal-content">
+                <p>GAZE 3 SEC: Select<br>HOME: Return to hub</p>
+                <button class="menu-item" onclick="closeHelp()">ACKNOWLEDGE</button>
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <button class="menu-item nav-btn" onclick="window.history.back()">❮</button>
+            <a href="index.html" class="menu-item nav-btn">⌂</a>
+            <button class="menu-item nav-btn" id="help-trigger">?</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

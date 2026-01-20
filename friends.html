@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AR Friends</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-market">
+
+    <div class="ar-overlay">
+        
+        <div class="top-section">
+            <div class="top-label">SYSTEM_SOCIAL_HUB</div>
+            
+            <div class="menu-stack">
+                <div class="menu-header">Friends</div>
+                <a href="chat.html" class="menu-item">Open Chat</a>
+                <a href="find.html" class="menu-item">Find Friends</a>
+            </div>
+        </div>
+
+        <div id="help-modal">
+            <div class="modal-content">
+                <p>
+                    <strong>GAZE 3 SEC:</strong> Highlight & Auto-Select<br>
+                    <strong>NAVIGATE:</strong> Follow blue path indicators<br>
+                    <strong>HOME:</strong> Return to main hub
+                </p>
+                <button class="menu-item" onclick="closeHelp()" style="width: 100%;">ACKNOWLEDGE</button>
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <button class="menu-item nav-btn" onclick="window.history.back()">❮</button>
+            <a href="index.html" class="menu-item nav-btn">⌂</a>
+            <button class="menu-item nav-btn" id="help-trigger">?</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Help Modal Logic for this page
+        document.getElementById('help-trigger').onclick = function() {
+            document.getElementById('help-modal').style.display = 'block';
+        };
+
+        function closeHelp() {
+            document.getElementById('help-modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

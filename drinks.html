@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drinks - AR Market</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-market">
+    <div class="ar-overlay">
+        <div class="top-section">
+            <div class="menu-header">Drinks</div>
+            <div class="menu-stack">
+                <button class="menu-item" onclick="startNavigation('Gluewien.jpg')">Glühwein Stall</button>
+                <button class="menu-item" onclick="startNavigation('Gluewien.jpg')">Wine</button>
+                
+                <button class="menu-item" onclick="startNavigation('Hotchocolate.jpg')">Hot Chocolate</button>
+            </div>
+        </div>
+
+        <div id="ar-nav-layer" class="ar-nav-overlay" style="display: none;">
+            <div class="nav-toast">SCANNING VENDOR AR...</div>
+        </div>
+
+        <div class="bottom-nav">
+            <button class="menu-item nav-btn" onclick="window.history.back()">❮</button>
+            <a href="index.html" class="menu-item nav-btn">⌂</a>
+            <button class="menu-item nav-btn" onclick="alert('Select a drink to see the AR menu')">?</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function startNavigation(imageName) {
+            // 1. Show the transition overlay
+            const loader = document.getElementById('ar-nav-layer');
+            if(loader) loader.style.display = 'flex';
+
+            // 2. Redirect to navigation.html with the image in the URL
+            setTimeout(() => {
+                window.location.href = 'navigation.html?bg=' + imageName;
+            }, 800);
+        }
+    </script>
+</body>
+</html>

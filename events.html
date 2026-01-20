@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upcoming Events</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-market">
+    <div class="ar-overlay">
+        
+        <div class="top-section">
+            <div class="top-label">LIVE_SCHEDULE</div>
+            <div class="menu-header" style="margin-bottom: 20px;">Upcoming Events</div>
+
+            <div class="explore-grid">
+                <div class="event-card">
+                    <div class="event-info">
+                        <span class="stall-name">Grand Tree Lighting</span>
+                        <span class="wait-time">TIME: 19:30</span>
+                    </div>
+                    <button class="menu-item nav-trigger" onclick="startNavigation('Treenavi.jpg')">NAVIGATE</button>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-info">
+                        <span class="stall-name">Live Brass Band</span>
+                        <span class="wait-time">TIME: 20:15</span>
+                    </div>
+                    <button class="menu-item nav-trigger" onclick="startNavigation('Bandnavi.jpg')">NAVIGATE</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="ar-nav-layer" class="ar-nav-overlay" style="display: none;">
+            <div class="ar-arrow">
+                <div class="arrow-head"></div>
+                <div class="arrow-line"></div>
+            </div>
+            <div class="nav-toast">LOCKING SIGNAL...</div>
+        </div>
+
+        <div class="bottom-nav">
+            <button class="menu-item nav-btn" onclick="window.history.back()">❮</button>
+            <a href="index.html" class="menu-item nav-btn">⌂</a>
+            <button class="menu-item nav-btn" id="help-trigger">?</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function startNavigation(targetImage) {
+            // 1. Show the "Locking Signal" animation
+            const navLayer = document.getElementById('ar-nav-layer');
+            navLayer.style.display = 'block';
+            
+            // 2. Redirect to navigation.html and pass the image name in the URL
+            setTimeout(() => {
+                window.location.href = 'navigation.html?bg=' + targetImage;
+            }, 1500);
+        }
+
+        // Help Modal Logic
+        document.getElementById('help-trigger').onclick = () => {
+            alert("Gaze at 'NAVIGATE' to start the AR path.");
+        };
+    </script>
+</body>
+</html>
